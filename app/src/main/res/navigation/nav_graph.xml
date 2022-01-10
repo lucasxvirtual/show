@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/showListFragment">
+
+    <fragment
+        android:id="@+id/showListFragment"
+        android:name="com.lucasxvirtual.show.ShowListFragment"
+        android:label="@string/show_list">
+
+        <action
+            android:id="@+id/action_showListFragment_to_showDetailFragment"
+            app:destination="@id/showDetailFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/showDetailFragment"
+        android:name="com.lucasxvirtual.show.ShowDetailFragment"
+        android:label="@string/show_detail">
+
+        <action
+            android:id="@+id/action_showDetailFragment_to_episodeDetailFragment"
+            app:destination="@id/episodeDetailFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/episodeDetailFragment"
+        android:name="com.lucasxvirtual.show.EpisodeDetailFragment"
+        android:label="@string/episode_detail"/>
+
+</navigation>
