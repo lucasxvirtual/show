@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/showListFragment"
-        android:name="com.lucasxvirtual.show.ShowListFragment"
+        android:name="com.lucasxvirtual.show.presentation.ShowListFragment"
         android:label="@string/show_list">
 
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/showDetailFragment"
-        android:name="com.lucasxvirtual.show.ShowDetailFragment"
+        android:name="com.lucasxvirtual.show.presentation.ShowDetailFragment"
         android:label="@string/show_detail">
 
         <action
@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/episodeDetailFragment"
-        android:name="com.lucasxvirtual.show.EpisodeDetailFragment"
+        android:name="com.lucasxvirtual.show.presentation.EpisodeDetailFragment"
         android:label="@string/episode_detail"/>
 
 </navigation>

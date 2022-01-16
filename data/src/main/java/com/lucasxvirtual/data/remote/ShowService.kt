@@ -2,8 +2,8 @@ package com.lucasxvirtual.data.remote
 
 import com.lucasxvirtual.data.BuildConfig
 import com.lucasxvirtual.data.model.SearchResponse
-import com.lucasxvirtual.data.model.Season
-import com.lucasxvirtual.data.model.Show
+import com.lucasxvirtual.data.model.SeasonResponse
+import com.lucasxvirtual.data.model.ShowResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,12 +17,12 @@ interface ShowService {
     @GET("shows")
     suspend fun getShows(
         @Query("page") page : Int
-    ) : List<Show>
+    ) : List<ShowResponse>
 
     @GET("shows/{id}/seasons")
     suspend fun getSeasonsOfShow(
         @Path("id") id : Int
-    ) : List<Season>
+    ) : List<SeasonResponse>
 
     @GET("search/shows")
     suspend fun searchShow(

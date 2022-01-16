@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class SearchResponse(
-    val show : ShowResponse
+data class ScheduleResponse(
+    val time : String,
+    val days : List<String>
 ) : Parcelable

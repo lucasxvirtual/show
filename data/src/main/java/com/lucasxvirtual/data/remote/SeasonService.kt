@@ -1,7 +1,7 @@
 package com.lucasxvirtual.data.remote
 
 import com.lucasxvirtual.data.BuildConfig
-import com.lucasxvirtual.data.model.Episode
+import com.lucasxvirtual.data.model.EpisodeResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,7 +14,7 @@ interface SeasonService {
     @GET("seasons/{id}/episodes")
     suspend fun getEpisodesOfSeason(
         @Path("id") id : Int
-    ) : List<Episode>
+    ) : List<EpisodeResponse>
 
     companion object {
         private const val BASE_URL = BuildConfig.BASE_URL

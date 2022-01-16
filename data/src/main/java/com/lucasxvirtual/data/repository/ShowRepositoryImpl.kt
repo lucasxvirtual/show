@@ -1,8 +1,8 @@
 package com.lucasxvirtual.data.repository
 
 import com.lucasxvirtual.data.model.SearchResponse
-import com.lucasxvirtual.data.model.Season
-import com.lucasxvirtual.data.model.Show
+import com.lucasxvirtual.data.model.SeasonResponse
+import com.lucasxvirtual.data.model.ShowResponse
 import com.lucasxvirtual.data.remote.Resource
 import com.lucasxvirtual.data.remote.ShowService
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ class ShowRepositoryImpl @Inject constructor(
     private val showService: ShowService
 ) : ShowRepository {
 
-    override suspend fun getShows(page: Int): Flow<Resource<List<Show>>> {
+    override suspend fun getShows(page: Int): Flow<Resource<List<ShowResponse>>> {
         return flow {
             emit(Resource.loading(null))
             val shows = showService.getShows(page)
@@ -31,7 +31,7 @@ class ShowRepositoryImpl @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun getSeasonsOfShow(showId: Int): Flow<Resource<List<Season>>> {
+    override suspend fun getSeasonsOfShow(showId: Int): Flow<Resource<List<SeasonResponse>>> {
         return flow {
             emit(Resource.loading(null))
             val shows = showService.getSeasonsOfShow(showId)

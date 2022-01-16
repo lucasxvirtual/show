@@ -1,4 +1,4 @@
-package com.lucasxvirtual.data.model
+package com.lucasxvirtual.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Season(
     val id : Int,
     val number : Int,
-    val name : String?
+    val name : String?,
+    var episodes : List<Episode>? = null
 ) : Parcelable

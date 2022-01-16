@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.lucasxvirtual.show"
         minSdk 21
-        targetSdk 32
+        targetSdk 31
         versionCode 1
         versionName "1.0"
 
@@ -32,30 +32,49 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    kapt {
+        javacOptions {
+            // These options are normally set automatically via the Hilt Gradle plugin, but we
+            // set them manually to workaround a bug in the Kotlin 1.5.20
+            option("-Adagger.fastInit=ENABLED")
+            option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+        }
+    }
 }
 
 dependencies {
     implementation project(':domain')
     implementation project(':data')
 
-    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
     implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
+    // UI
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+    implementation "androidx.paging:paging-runtime-ktx:$rootProject.pagingVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
     // Dependency injection
-    compileOnly "com.squareup.inject:assisted-inject-annotations-dagger2:$rootProject.assistedInjectVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$rootProject.hiltVersion"
-    kapt "androidx.hilt:hilt-compiler:$rootProject.hiltViewModelVersion"
-    kapt "com.squareup.inject:assisted-inject-processor-dagger2:$rootProject.assistedInjectVersion"
-    implementation "com.google.dagger:hilt-android:$rootProject.hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$rootProject.hiltViewModelVersion"
-    implementation "androidx.hilt:hilt-work:$rootProject.hiltWorkerVersion"
-    kapt "androidx.hilt:hilt-compiler:$rootProject.hiltWorkerVersion"
+    implementation "com.google.dagger:hilt-android:2.35"
+    kapt "com.google.dagger:hilt-android-compiler:2.35"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    kapt 'androidx.hilt:hilt-compiler:1.0.0'
 
     // Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"

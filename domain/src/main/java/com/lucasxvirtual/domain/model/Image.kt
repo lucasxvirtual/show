@@ -1,4 +1,4 @@
-package com.lucasxvirtual.data.model
+package com.lucasxvirtual.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

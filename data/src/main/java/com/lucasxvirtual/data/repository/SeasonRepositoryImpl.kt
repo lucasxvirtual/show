@@ -1,6 +1,6 @@
 package com.lucasxvirtual.data.repository
 
-import com.lucasxvirtual.data.model.Episode
+import com.lucasxvirtual.data.model.EpisodeResponse
 import com.lucasxvirtual.data.remote.Resource
 import com.lucasxvirtual.data.remote.SeasonService
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ class SeasonRepositoryImpl @Inject constructor(
     private val seasonService: SeasonService
 ) : SeasonRepository {
 
-    override suspend fun getEpisodesOfSeason(seasonId: Int) : Flow<Resource<List<Episode>>> {
+    override suspend fun getEpisodesOfSeason(seasonId: Int) : Flow<Resource<List<EpisodeResponse>>> {
         return flow {
             emit(Resource.loading(null))
             val shows = seasonService.getEpisodesOfSeason(seasonId)
